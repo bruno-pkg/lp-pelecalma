@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÉTODO PELE CALMA | Protocolo Anti-Inflamatório</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00ffc3; 
+            --primary-hover: #00d9a5;
+            --bg: #0b0f14;
+            --surface: #161b22;
+            --text-main: #f0f6fc;
+            --text-dim: #8b949e;
+            --error: #ff4d4d;
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 100px 24px;
+            max-width: 1100px;
+            margin: auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero {
+            background: radial-gradient(circle at top right, #1a232e, var(--bg));
+            text-align: center;
+            padding: 120px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin: 0 0 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .timer-container {
+            background: rgba(0, 255, 195, 0.05);
+            border: 1px solid rgba(0, 255, 195, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .timer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(0, 255, 195, 0.3);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #0b0f14;
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(0, 255, 195, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 255, 195, 0.4);
+            background: var(--primary-hover);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .img-box {
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-label {
+            padding: 15px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="fomoPopup" style="
+position:fixed;
+bottom:20px;
+left:20px;
+background:#141a21;
+padding:12px 16px;
+border-radius:12px;
+color:#ffffff;
+display:none;
+z-index:9999;
+font-family:Arial,sans-serif;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+transition:0.3s;
+border: 1px solid rgba(0, 255, 195, 0.2);
+">
+    <span id="fomoText"></span>
+</div>
+
+<div class="hero">
+    <div class="container">
+        <h1>MÉTODO PELE CALMA</h1>
+        <p>Descubra o protocolo natural que está ajudando pessoas a controlar crises de pele agindo na causa — não apenas nos sintomas.</p>
+        
+        <a href="https://pay.wiapy.com/T_U--odBTc" class="btn">QUERO ACESSAR AGORA</a>
+
+        <div class="timer-container">
+            <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 5px;">Oferta expira em:</div>
+            <div class="timer" id="timer">15m 00s</div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Algumas pessoas perceberam isso depois de aplicar o protocolo…</h2>
+    <div class="grid">
+        <div class="img-box">
+            <img src="https://i.imgur.com/gsYBWwf.jpeg" alt="Psoríase Caso 1">
+            <div class="img-label">Antes e Depois</div>
+        </div>
+        <div class="img-box">
+            <img src="https://i.imgur.com/5k5QV36.jpeg" alt="Psoríase Caso 2">
+            <div class="img-label">Antes e Depois</div>
+        </div>
+        <div class="img-box">
+            <img src="https://i.imgur.com/mCvGeXr.jpeg" alt="Psoríase Caso 3">
+            <div class="img-label">Antes e Depois</div>
+        </div>
+    </div>
+</section>
+
+<section style="background: rgba(255,255,255,0.02); border-radius: 30px;">
+    <h2 style="text-align: center; font-size: 2.5rem;">O Protocolo de 3 Camadas</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>01. Redução</h3>
+            <p>Limpamos os agentes inflamatórios que sobrecarregam seu sistema imunológico.</p>
+        </div>
+        <div class="card">
+            <h3>02. Reparação</h3>
+            <p>Nutrientes específicos para acelerar a cicatrização das placas epiteliais.</p>
+        </div>
+        <div class="card">
+            <h3>03. Blindagem</h3>
+            <p>Hábitos projetados para prevenir que novas crises sejam ativadas.</p>
+        </div>
+    </div>
+</section>
+
+<div style="padding:80px 20px;background:#0b0f14;color:#ffffff;">
+    <div style="max-width:1000px;margin:auto;text-align:center;">
+        <h2 style="color:#00ffc3;font-size:2rem;margin-bottom:10px;">
+        Por que o Método Pele Calma é diferente?
+        </h2>
+        <p style="color:#cbd5e1;margin-bottom:50px;">
+        Um protocolo pensado para ajudar você a entender e equilibrar os fatores que influenciam a saúde da pele.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+            <div style="background:#141a21;padding:30px;border-radius:16px;">
+                <h3 style="color:#00ffc3;">🔥 Atua na causa</h3>
+                <p>Foco no equilíbrio interno e identificação de possíveis gatilhos inflamatórios.</p>
+            </div>
+            <div style="background:#141a21;padding:30px;border-radius:16px;">
+                <h3 style="color:#00ffc3;">⚡ Estratégia natural</h3>
+                <p>Orientações práticas para aplicar no dia a dia sem rotinas complexas.</p>
+            </div>
+            <div style="background:#141a21;padding:30px;border-radius:16px;">
+                <h3 style="color:#00ffc3;">🧠 Mais controle</h3>
+                <p>Aprenda a reconhecer sinais do seu corpo e reduzir episódios inesperados.</p>
+            </div>
+            <div style="background:#141a21;padding:30px;border-radius:16px;">
+                <h3 style="color:#00ffc3;">📈 Evolução gradual</h3>
+                <p>Protocolo estruturado para acompanhar sua evolução de forma consistente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div style="max-width:600px;margin:auto;font-family:Arial,sans-serif;color:#ffffff;">
+        <h3 style="text-align:center;margin-bottom:20px;">💬 O que estão dizendo agora:</h3>
+        <div id="social-proof"></div>
+        <div style="text-align:center;margin-top:15px;color:#00ffc3;font-weight:bold;">
+            🔥 <span id="liveCounter">17</span> pessoas acessando agora
+        </div>
+    </div>
+</section>
+
+<div style="text-align: center; padding: 40px 20px;">
+    <a href="https://pay.wiapy.com/T_U--odBTc" class="btn">QUERO ACESSAR AGORA</a>
+</div>
+
+<footer style="background:#0b0b0b;padding:50px 20px;text-align:center;font-family:Arial,Helvetica,sans-serif;color:#ffffff;">
+
+  <h2 style="font-size:24px;margin-bottom:15px;font-weight:700;">
+    A decisão é sua... continuar como está ou iniciar sua transformação hoje.
+  </h2>
+
+  <p style="opacity:0.85;max-width:600px;margin:0 auto 30px;line-height:1.6;">
+    Você não chegou até aqui por acaso. Descubra como recuperar o equilíbrio do seu organismo
+    com um protocolo natural pensado para gerar resultados reais.
+  </p>
+
+  <div style="background:#111;border:1px solid #222;padding:25px;border-radius:12px;max-width:500px;margin:0 auto 30px;">
+
+      <img src="https://i.imgur.com/74ovyUk.png"
+           alt="Garantia 7 dias"
+           style="max-width:160px;width:100%;margin-bottom:15px;">
+
+      <h3 style="font-size:18px;margin-bottom:10px;">
+        Garantia de 7 dias ou seu dinheiro de volta
+      </h3>
+
+      <p style="font-size:14px;opacity:0.85;line-height:1.6;">
+        Teste sem risco. Se você não notar melhorias ou sentir que este protocolo
+        não ajudou, basta solicitar o reembolso dentro do prazo.
+        Simples, rápido e sem complicações. O risco é totalmente nosso.
+      </p>
+
+  </div>
+
+  <div style="margin-bottom:25px;font-size:14px;opacity:0.85;">
+    🔒 Compra segura &nbsp; | &nbsp; 🔐 Dados protegidos &nbsp; | &nbsp; ⭐ Acesso imediato
+  </div>
+
+  <hr style="border:1px solid #222;margin:30px auto;width:80%;">
+
+  <p style="font-size:13px;opacity:0.6;">
+    © 2026 Todos os direitos reservados.
+  </p>
+
+</footer>
+<script>
+    // --- TIMER PRINCIPAL ---
+    var countDownDate = new Date();
+    countDownDate.setMinutes(countDownDate.getMinutes() + 15);
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s";
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "OFERTA EXPIRADA";
+            document.getElementById("timer").style.color = "var(--error)";
+        }
+    }, 1000);
+
+    // --- COMENTÁRIOS ---
+    const comentarios = [
+        {
+            nome:"Carla Mendes",
+            foto:"https://i.imgur.com/X6Loecd.jpeg",
+            texto:"Sério… eu não esperava tanta diferença. Já senti minha pele menos irritada."
+        },
+        {
+            nome:"Juliana Ribeiro",
+            foto:"https://i.imgur.com/syVbSi6.jpeg",
+            texto:"Gostei porque não promete milagre. Fácil de aplicar e fez sentido."
+        },
+        {
+            nome:"Ricardo Alves",
+            foto:"https://i.imgur.com/nHrP2TC.jpeg",
+            texto:"Finalmente entendi meus gatilhos. Já tinha testado várias coisas antes."
+        }
+    ];
+
+    let index = 0;
+    function adicionarComentario(){
+        if(index >= comentarios.length) return;
+        const c = comentarios[index];
+        const div = document.createElement("div");
+        div.style.background="#141a21";
+        div.style.padding="15px";
+        div.style.borderRadius="12px";
+        div.style.marginBottom="15px";
+        div.style.display="flex";
+        div.style.gap="12px";
+        div.style.opacity="0";
+        div.style.transform="translateY(20px)";
+        div.style.transition="0.5s";
+        div.innerHTML = `
+        <img src="${c.foto}" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">
+        <div>
+        <strong>${c.nome}</strong><br>
+        <span style="color:#00ffc3;">⭐⭐⭐⭐⭐</span>
+        <p style="margin:5px 0;">"${c.texto}"</p>
+        </div>
+        `;
+        document.getElementById("social-proof").appendChild(div);
+        setTimeout(()=>{
+            div.style.opacity="1";
+            div.style.transform="translateY(0)";
+        },50);
+        index++;
+    }
+    setInterval(adicionarComentario, 2500);
+
+    // --- CONTADOR LIVE ---
+    setInterval(()=>{
+        const counter = document.getElementById("liveCounter");
+        let num = parseInt(counter.innerText);
+        num += Math.floor(Math.random()*3)-1;
+        if(num < 12) num = 14;
+        if(num > 39) num = 33;
+        counter.innerText = num;
+    },3000);
+
+    // --- POPUP FOMO ---
+    const nomes = [
+        "Ana","Lucas","Mariana","Pedro","Fernanda","Rafael","Bruna","Carlos",
+        "Juliana","Matheus","Camila","João","Larissa","Gabriel","Renata",
+        "Eduardo","Bianca","Felipe","Amanda","Gustavo","Beatriz","Diego",
+        "Vanessa","Thiago","Natália","Rodrigo","Patrícia","Leonardo"
+    ];
+
+    const acoes = [
+        "acabou de acessar.",
+        "acabou de comprar.",
+        "garantiu acesso agora.",
+        "entrou na página."
+    ];
+
+    function mostrarFomo(){
+        const popup = document.getElementById("fomoPopup");
+        const texto = document.getElementById("fomoText");
+        const nome = nomes[Math.floor(Math.random()*nomes.length)];
+        const acao = acoes[Math.floor(Math.random()*acoes.length)];
+        texto.innerText = "🔥 "+nome+" "+acao;
+        popup.style.display = "block";
+        popup.style.opacity = "1";
+        setTimeout(()=>{
+            popup.style.opacity = "0";
+            setTimeout(()=>{ popup.style.display="none"; },300);
+        },3500);
+    }
+    setTimeout(mostrarFomo,4000);
+    setInterval(mostrarFomo,9000);
+</script>
+
+</body>
+</html>
